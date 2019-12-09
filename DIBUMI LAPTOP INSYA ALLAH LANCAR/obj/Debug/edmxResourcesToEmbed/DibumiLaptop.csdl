@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dibumilaptopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="garansi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="gudang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="merek_id" Type="Int64" />
+    <Property Name="tipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="processor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="penyimpanan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ukuran_layar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="stok" Type="Int64" />
+    <Property Name="gudang_id" Type="Int64" />
+    <Property Name="kondisi_id" Type="Int64" />
+    <Property Name="tanggal_ditambahkan" Type="DateTime" Precision="3" />
+    <Property Name="garansi_id" Type="Int64" />
+    <Property Name="garansi_expired" Type="DateTime" Precision="3" />
+    <Property Name="harga" Type="Int64" />
+  </EntityType>
+  <EntityType Name="kondisi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="merek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="return">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transaksi_id" Type="Int64" />
+    <Property Name="item_id" Type="Int64" />
+    <Property Name="tanggal_return" Type="DateTime" Precision="3" />
+    <Property Name="status_return" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="alasan_return" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="harga_satuan_temp" Type="Int64" />
+    <Property Name="total_harga" Type="Int64" />
+    <Property Name="total_bayar_return" Type="Int64" />
+  </EntityType>
+  <EntityType Name="transaksi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_id" Type="Int64" />
+    <Property Name="tanggal_transaksi" Type="DateTime" Precision="3" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="harga_satuan_temp" Type="Int64" />
+    <Property Name="total_harga" Type="Int64" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="dibumilaptopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="garansis" EntityType="Self.garansi" />
+    <EntitySet Name="gudangs" EntityType="Self.gudang" />
+    <EntitySet Name="items" EntityType="Self.item" />
+    <EntitySet Name="kondisis" EntityType="Self.kondisi" />
+    <EntitySet Name="mereks" EntityType="Self.merek" />
+    <EntitySet Name="returns" EntityType="Self.return" />
+    <EntitySet Name="transaksis" EntityType="Self.transaksi" />
+  </EntityContainer>
+</Schema>

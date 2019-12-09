@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dibumilaptopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="garansi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="nvarchar(max)" />
+    <Property Name="deskripsi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="gudang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="nvarchar(max)" />
+    <Property Name="deskripsi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="merek_id" Type="bigint" />
+    <Property Name="tipe" Type="nvarchar(max)" />
+    <Property Name="deskripsi" Type="text" />
+    <Property Name="processor" Type="nvarchar(max)" />
+    <Property Name="ram" Type="nvarchar(max)" />
+    <Property Name="penyimpanan" Type="nvarchar(max)" />
+    <Property Name="ukuran_layar" Type="nvarchar(max)" />
+    <Property Name="stok" Type="bigint" />
+    <Property Name="gudang_id" Type="bigint" />
+    <Property Name="kondisi_id" Type="bigint" />
+    <Property Name="tanggal_ditambahkan" Type="datetime" />
+    <Property Name="garansi_id" Type="bigint" />
+    <Property Name="garansi_expired" Type="datetime" />
+    <Property Name="harga" Type="bigint" />
+  </EntityType>
+  <EntityType Name="kondisi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="nvarchar(max)" />
+    <Property Name="deskripsi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="merek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="nvarchar(max)" />
+    <Property Name="deskripsi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="return">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transaksi_id" Type="bigint" />
+    <Property Name="item_id" Type="bigint" />
+    <Property Name="tanggal_return" Type="datetime" />
+    <Property Name="status_return" Type="nvarchar" MaxLength="50" />
+    <Property Name="keterangan" Type="text" />
+    <Property Name="alasan_return" Type="text" />
+    <Property Name="qty" Type="int" />
+    <Property Name="harga_satuan_temp" Type="bigint" />
+    <Property Name="total_harga" Type="bigint" />
+    <Property Name="total_bayar_return" Type="bigint" />
+  </EntityType>
+  <EntityType Name="transaksi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_id" Type="bigint" />
+    <Property Name="tanggal_transaksi" Type="datetime" />
+    <Property Name="qty" Type="int" />
+    <Property Name="harga_satuan_temp" Type="bigint" />
+    <Property Name="total_harga" Type="bigint" />
+    <Property Name="deskripsi" Type="text" />
+  </EntityType>
+  <EntityContainer Name="dibumilaptopModelStoreContainer">
+    <EntitySet Name="garansi" EntityType="Self.garansi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gudang" EntityType="Self.gudang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kondisi" EntityType="Self.kondisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="merek" EntityType="Self.merek" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="return" EntityType="Self.return" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaksi" EntityType="Self.transaksi" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
